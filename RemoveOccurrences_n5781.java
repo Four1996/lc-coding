@@ -8,15 +8,20 @@ package leetcode;
  **/
 public class RemoveOccurrences_n5781 {
     public static String removeOccurrences(String s, String part) {
-        while(s.contains(part)){
-            s=s.replace(part,"");
+        int m = s.length(), n = part.length();
+        if (m < n) return s;
+        for (int i = 0; i < m - n + 1; i++) {
+            if (s.substring(i, i + n).equals(part)) {
+                s = s.substring(0, i) + s.substring(i + n);
+                return removeOccurrences(s, part);
+            }
         }
         return s;
     }
 
     public static void main(String[] args) {
-        String s="axxxxyyyyb";
-        String part="xy";
-        System.out.println(removeOccurrences(s,part));
+        String s = "aabababa";
+        String part = "aba";
+        System.out.println(removeOccurrences(s, part));
     }
 }
