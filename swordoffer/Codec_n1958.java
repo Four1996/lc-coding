@@ -44,7 +44,7 @@ public class Codec_n1958 {
         if(data.equals("[]")) return null;
         String[] vals = data.substring(1, data.length() - 1).split(",");
         TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
-        Queue<TreeNode> queue = new LinkedList<>() {{ add(root); }};
+        Queue<TreeNode> queue = new LinkedList() {{ add(root); }};
         int i = 1;
         while(!queue.isEmpty()) {
             TreeNode node = queue.poll();
