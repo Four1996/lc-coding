@@ -6,7 +6,7 @@ package leetcode;
  * @author: panhao
  * @date: 2021-07-04 20:03
  **/
-public class SortColors_n75 {
+public  class SortColors_n75 {
     public static void sortColors(int[] nums) {
         int num0=0,num1=0,num2=0;
         for (int i=0;i<nums.length;i++){
