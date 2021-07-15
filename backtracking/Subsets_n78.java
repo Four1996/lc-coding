@@ -29,7 +29,4 @@ public class Subsets_n78 {
         }
         return ans;
     }
-    public void dfs(int[] nums,int idx){
-
-    }
 }
