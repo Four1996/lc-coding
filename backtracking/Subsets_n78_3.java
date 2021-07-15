@@ -26,6 +26,7 @@ public class Subsets_n78_3 {
                     path.add(nums[i]);
                 }
             }
+            // 必须new ArrayList<>()，不然直接添加path的话，是每次添加的path的引用。
             ans.add(new ArrayList<>(path));
         }
         return ans;
