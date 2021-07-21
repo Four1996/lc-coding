@@ -12,18 +12,19 @@ import java.util.List;
  * @author: panhao
  * @date: 2021-07-18 09:51
  **/
-public class WordBreak_n139 {
+public class WordBreak_n139_2 {
 
     public static boolean wordBreak(String s, List<String> wordDict) {
-        HashSet<String> set = new HashSet<>(wordDict);
         int len = s.length();
         boolean[] dp = new boolean[len + 1];
         dp[0] = true;
-        for (int i = 0; i < len; i++) {
-            for (int j = i + 1; j <= len; j++) {
-                String substring = s.substring(i, j);
-                if (dp[i] && set.contains(substring)) {
-                    dp[j] = true;
+        for (int i=0;i<len;i++){
+            if (!dp[i]){
+                continue;
+            }
+            for (String s1 : wordDict) {
+                if (s1.length()+i<=len&&s.startsWith(s1,i)){
+                    dp[i+s1.length()]=true;
                 }
             }
         }
@@ -31,8 +32,8 @@ public class WordBreak_n139 {
     }
 
     public static void main(String[] args) {
-        String s="a";
-        List<String> list=new ArrayList<>(Arrays.asList("a"));
+        String s="leetcode";
+        List<String> list=new ArrayList<>(Arrays.asList("leet","code"));
         System.out.println(wordBreak(s,list));
     }
 
