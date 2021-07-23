@@ -15,7 +15,7 @@ public class IsCovered_n5767 {
                     break;
                 }
             }
-            if (tag==false) return false;
+            if (!tag) return false;
             tag=false;
         }
         return true;
