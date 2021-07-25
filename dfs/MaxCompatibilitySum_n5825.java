@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.dfs;
 
 /**
  * @program: first
