@@ -10,33 +10,18 @@ import java.util.Arrays;
  **/
 public class NumberOfWeeks_n5831 {
     public static long numberOfWeeks(int[] milestones) {
-        int len = milestones.length;
-        long week = 0;
+
         Arrays.sort(milestones);
-        int left = 0, right = len - 1;
-        while (left < right) {
-            if (milestones[left] < milestones[right]) {
-                week += (milestones[left] * 2L);
-                milestones[right] -= milestones[left];
-                milestones[left] = 0;
-
-                left++;
-            } else if (milestones[left] == milestones[right]) {
-                week += (milestones[left] * 2L);
-                milestones[left] = 0;
-                milestones[right] = 0;
-                left++;
-                right--;
-            } else if (milestones[left] > milestones[right]) {
-                week += (milestones[right] * 2L);
-                milestones[left] -= milestones[right];
-                milestones[right] = 0;
-                right--;
-
-            }
+        long max=milestones[milestones.length-1];
+        long sum=0;
+        for (int milestone : milestones) {
+            sum+=milestone;
         }
-        if (milestones[right] > 0 || milestones[left] > 0) week++;
-        return week;
+        long rest=sum-max;
+        if (max>rest){
+            return rest*2+1;
+        }
+        else return sum;
     }
 
     public static void main(String[] args) {
