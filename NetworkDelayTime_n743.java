@@ -11,7 +11,7 @@ import java.util.*;
 public class NetworkDelayTime_n743 {
 
     public static int networkDelayTime(int[][] times, int n, int k) {
-        final int INF = Integer.MAX_VALUE / 2;
+        int INF = Integer.MAX_VALUE / 2;
         int[][] g = new int[n][n];
         for (int i = 0; i < n; ++i) {
             Arrays.fill(g[i], INF);
