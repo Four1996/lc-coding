@@ -9,32 +9,29 @@ import java.util.*;
  * @date: 2021-08-07 23:15
  **/
 public class MinSpaceWastedKResizing_n5828 {
-    public static int minSpaceWastedKResizing(int[] nums, int k) {
-        int len=nums.length;
-        int[] MAX=new int[len];
-        int max=0;
-        Deque<Integer> deque=new ArrayDeque<>();
-        Set<Integer> set=new HashSet<>();
-        for (int i=0;i<len;i++){
-            max=Math.max(max,nums[i]);
-            MAX[i]=max;
-            if (set.contains(max)) continue;
-            deque.addFirst(max);
-            set.add(max);
-            while (deque.size()>k+1) deque.pollLast();
-        }
-        int ans=0;
-        if (!deque.isEmpty()) max=deque.pollLast();
-        else max=MAX[len-1];
-        for (int num : nums) {
-            if (num > max) {
-                if (!deque.isEmpty()) {
-                    max = deque.pollLast();
-                }
+    int INF = 0x3f3f3f3f;
+    int n, sum;
+    public int minSpaceWastedKResizing(int[] nums, int k) {
+        n = nums.length;
+        sum = 0;
+        int[][] premax = new int[n][n];
+        for (int i = 0; i < n; i++){
+            int m = 0;
+            for(int j = i; j < n; j++){
+                m = Math.max(m, nums[j]);
+                premax[i][j] = m * (j + 1 - i);
             }
-            ans += max - num;
+            sum += nums[i];
         }
-        return ans;
+
+        int[][] dp = new int[n][k+2];
+        for (int i = 0; i < n; i++) Arrays.fill(dp[i], INF);
+
+        for (int i = 0; i < n; i++)
+            for (int j = 1; j <= k + 1; j++)
+                for (int l = 0; l <= i; l++)
+                    dp[i][j] = Math.min(dp[i][j], (l == 0 ? 0 : dp[l-1][j-1]) + premax[l][i]);
+        return dp[n-1][k+1] - sum;
     }
 
     public static void main(String[] args) {
@@ -42,6 +39,6 @@ public class MinSpaceWastedKResizing_n5828 {
         // int[] nums={10,20,30};
         // int[] nums={10,20};
         int[] nums={13,46,42,45,35};
-        System.out.println(minSpaceWastedKResizing(nums,4));
+        System.out.println(new MinSpaceWastedKResizing_n5828().minSpaceWastedKResizing(nums,4));
     }
 }
