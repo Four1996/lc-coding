@@ -25,12 +25,17 @@ public class MinSpaceWastedKResizing_n5828 {
         }
 
         int[][] dp = new int[n][k+2];
-        for (int i = 0; i < n; i++) Arrays.fill(dp[i], INF);
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(dp[i], INF);
+        }
 
-        for (int i = 0; i < n; i++)
-            for (int j = 1; j <= k + 1; j++)
-                for (int l = 0; l <= i; l++)
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= k + 1; j++) {
+                for (int l = 0; l <= i; l++) {
                     dp[i][j] = Math.min(dp[i][j], (l == 0 ? 0 : dp[l-1][j-1]) + premax[l][i]);
+                }
+            }
+        }
         return dp[n-1][k+1] - sum;
     }
 
