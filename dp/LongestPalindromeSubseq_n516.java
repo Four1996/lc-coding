@@ -12,7 +12,6 @@ public class LongestPalindromeSubseq_n516 {
         char[] chars = s.toCharArray();
         // dp[i][j]代表字符串s在[i,...,j]范围内的最大回文子串。
         int[][] dp = new int[len][len];
-        int max = 1;
         for (int i = 0; i < len; i++) {
             dp[i][i] = 1;
         }
@@ -23,9 +22,8 @@ public class LongestPalindromeSubseq_n516 {
                 } else {
                     dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
                 }
-                max = Math.max(dp[i][j], max);
             }
         }
-        return max;
+        return dp[0][len - 1];
     }
 }
