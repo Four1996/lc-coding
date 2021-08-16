@@ -2,7 +2,7 @@ package leetcode.math;
 
 /**
  * @program: first
- * @description:
+ * @description: 快速乘
  * @author: panhao
  * @date: 2021-08-07 20:52
  **/
