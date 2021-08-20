@@ -1,4 +1,4 @@
-package leetcode.strings;
+package leetcode.double_pointer;
 
 /**
  * @program: first
