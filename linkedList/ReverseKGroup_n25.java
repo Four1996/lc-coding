@@ -1,4 +1,4 @@
-package leetcode.simulate;
+package leetcode.linkedList;
 
 import java.util.List;
 
