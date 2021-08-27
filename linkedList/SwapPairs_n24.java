@@ -7,7 +7,7 @@ package leetcode.linkedList;
  * @date: 2021-08-25 18:49
  **/
 public class SwapPairs_n24 {
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -24,16 +24,42 @@ public class SwapPairs_n24 {
         }
     }
 
-    public ListNode swapPairs(ListNode head) {
-        ListNode newHead=new ListNode(-1);
-        newHead.next=head;
-        ListNode dumy=head;
-        while (head.next!=null){
-            dumy=dumy.next;
-            if (dumy!=null){
-
+    public static ListNode swapPairs(ListNode head) {
+        ListNode newHead = new ListNode();
+        newHead.next = head;
+        ListNode left= newHead;
+        int k=2;
+        int count=1;
+        while (head!= null) {
+            if (count==k){
+                ListNode right=head;
+                ListNode[] reverse = reverse(left.next, right);
+                reverse[1].next=head.next;
+                left.next=reverse[0];
+                head=reverse[1];
+                left=reverse[1];
+                count=0;
             }
+            count++;
+            head=head.next;
         }
         return newHead.next;
+    }
+    public static ListNode[] reverse(ListNode head,ListNode tail) {
+        ListNode newHead=new ListNode(tail.val);
+        newHead.next=new ListNode(head.val);
+        return new ListNode[]{newHead,newHead.next};
+    }
+
+    public static void main(String[] args) {
+        ListNode n1=new ListNode(1);
+        ListNode n2=new ListNode(2);
+        ListNode n3=new ListNode(3);
+        ListNode n4=new ListNode(4);
+        n1.next=n2;
+        n2.next=n3;
+        n3.next=n4;
+        System.out.println(swapPairs(n1));
+
     }
 }
