@@ -1,4 +1,4 @@
-package leetcode.dfs;
+package leetcode.backtracking;
 
 import java.util.*;
 
