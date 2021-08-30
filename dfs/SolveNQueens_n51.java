@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.dfs;
 
 import java.util.*;
 
