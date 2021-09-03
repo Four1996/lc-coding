@@ -1,5 +1,7 @@
 package leetcode.design;
 
+import jdk.nashorn.internal.ir.IfNode;
+
 import java.util.HashMap;
 
 /**
@@ -10,6 +12,7 @@ import java.util.HashMap;
  **/
 public class LRU_2135 {
     class DeLinked {
+        int key;
         int val;
         DeLinked pre;
         DeLinked next;
@@ -17,11 +20,13 @@ public class LRU_2135 {
         public DeLinked() {
         }
 
-        public DeLinked(int val) {
+        public DeLinked(int key, int val) {
             this.val = val;
+            this.key = key;
         }
 
-        public DeLinked(int val, DeLinked pre, DeLinked next) {
+        public DeLinked(int key, int val, DeLinked pre, DeLinked next) {
+            this.key = key;
             this.val = val;
             this.pre = pre;
             this.next = next;
@@ -41,10 +46,53 @@ public class LRU_2135 {
     }
 
     public int get(int key) {
-        return 0;
+        if (map.containsKey(key)){
+            DeLinked node = map.get(key);
+            moveToHead(node);
+            return node.val;
+        }
+        return -1;
     }
 
     public void put(int key, int value) {
+        DeLinked node;
+        if (map.containsKey(key)){
+            node = map.get(key);
+            node.val=value;
+            map.put(key,node);
+            moveToHead(node);
+            deleteNode(node);
+        }else{
+            node=new DeLinked(key,value);
+            addToHead(node);
+            map.put(key,node);
+            if (map.size()>capacity){
+                DeLinked tail=deleteTail();
+                map.remove(tail.key);
+            }
+        }
+    }
 
+    private DeLinked deleteTail() {
+        DeLinked node=tail.pre;
+        deleteNode(node);
+        return node;
+    }
+
+    private void addToHead(DeLinked node) {
+        node.next=head.next;
+        head.next.pre=node;
+        node.pre=head;
+        head.next=node;
+    }
+
+    private void deleteNode(DeLinked node) {
+        node.pre.next=node.next;
+        node.next.pre=node.pre;
+    }
+
+    private void moveToHead(DeLinked node) {
+        deleteNode(node);
+        addToHead(node);
     }
 }
