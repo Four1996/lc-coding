@@ -21,7 +21,9 @@ public class BuildTree_n1895 {
 
     static HashMap<Integer,Integer> map=new HashMap<>();
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder.length == 0) return null;
+        if (preorder.length == 0) {
+            return null;
+        }
         for (int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);
         }
@@ -29,7 +31,9 @@ public class BuildTree_n1895 {
         return ans;
     }
      static TreeNode build(int[] preOrder,int[] inOrder,int preleft,int preright,int inleft,int inright){
-        if (preleft>preright) return null;
+        if (preleft>preright) {
+            return null;
+        }
 //      前序遍历的第一个结点就是根节点。
         int rootnode=preleft;
 //        在中序遍历中定位根节点位置
