@@ -1,4 +1,4 @@
-package leetcode.greedy;
+package leetcode.game;
 
 /**
  * @program: first
