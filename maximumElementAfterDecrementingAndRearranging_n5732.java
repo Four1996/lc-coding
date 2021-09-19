@@ -16,7 +16,7 @@ public class maximumElementAfterDecrementingAndRearranging_n5732 {
             if (Math.abs(arr[i]-arr[i-1])>1){
                 arr[i]=arr[i-1]+1;
             }
-            max=max>arr[i]?max:arr[i];
+            max= Math.max(max, arr[i]);
         }
         return max;
     }
