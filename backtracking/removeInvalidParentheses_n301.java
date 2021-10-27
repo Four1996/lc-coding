@@ -43,7 +43,7 @@ public class removeInvalidParentheses_n301 {
                     ans.clear();
                 }
                 tempMaxLen = temp.length();
-                ans.add(temp.toString());
+                ans.add(temp);
             }
             return;
         }
