@@ -8,7 +8,7 @@ package leetcode;
  **/
 public class IsNumber_n65_2 {
     public boolean isNumber(String s) {
-        if (s.contains("f") || s.contains("N") || s.contains("F") || s.contains("D") || s.contains("d")) {
+        if (s.contains("f") || s.contains("N") || s.contains("J") || s.contains("D") || s.contains("d")) {
             return false;
         }
         try {

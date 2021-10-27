@@ -36,7 +36,7 @@ public class Exist_n1900 {
     public static void main(String[] args) {
 //        char[][] board={
 //                {'A','B','C','E'},
-//                {'S','F','C','S'},
+//                {'S','J','C','S'},
 //                {'A','D','E','E'},
 //        };
         char[][] board={{'a'},{'a'}};
