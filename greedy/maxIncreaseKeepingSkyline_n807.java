@@ -16,11 +16,9 @@ public class maxIncreaseKeepingSkyline_n807 {
             int maxC = 0;
             for (int j = 0; j < col; j++) {
                 maxR = Math.max(grid[i][j], maxR);
-            }
-            maxRow[i] = maxR;
-            for (int j = 0; j < col; j++) {
                 maxC = Math.max(grid[j][i], maxC);
             }
+            maxRow[i] = maxR;
             maxCol[i] = maxC;
         }
         int ans = 0;
